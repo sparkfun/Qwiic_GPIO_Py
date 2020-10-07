@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qwiic_gpio &mdash; sparkfun_gpio_py 0.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> sparkfun_gpio_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Qwiic_Relay_Py</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apiref.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ex1.html">Example One</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ex2.html">Example 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ex3.html">Example 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ex4.html">Example 4</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://sparkfun.com">     SparkFun</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.sparkfun.com/products/17047">SparkFun Qwiic GPIO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sparkfun/Qwiic_GPIO_Py">     GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.sparkfun.com/qwiic">     SparkFun qwiic</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sparkfun_gpio_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>qwiic_gpio</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qwiic_gpio</h1><div class="highlight"><pre>
+<span></span><span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># qwiic_gpio.py</span>
+<span class="c1">#</span>
+<span class="c1"># Python library for the SparkFun qwiic gpio sensor.</span>
+<span class="c1">#</span>
+<span class="c1"># This sensor is available on the SparkFun Environmental Combo Breakout board.</span>
+<span class="c1">#   https://www.sparkfun.com/products/14348</span>
+<span class="c1">#</span>
+<span class="c1">#------------------------------------------------------------------------</span>
+<span class="c1">#</span>
+<span class="c1"># Written by  SparkFun Electronics, May 2019</span>
+<span class="c1"># </span>
+<span class="c1"># This python library supports the SparkFun Electroncis qwiic </span>
+<span class="c1"># qwiic sensor/board ecosystem </span>
+<span class="c1">#</span>
+<span class="c1"># More information on qwiic is at https:// www.sparkfun.com/qwiic</span>
+<span class="c1">#</span>
+<span class="c1"># Do you like this library? Help support SparkFun. Buy a board!</span>
+<span class="c1">#==================================================================================</span>
+<span class="c1"># Copyright (c) 2020 SparkFun Electronics</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy </span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal </span>
+<span class="c1"># in the Software without restriction, including without limitation the rights </span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell </span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is </span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all </span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR </span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, </span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE </span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER </span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, </span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE </span>
+<span class="c1"># SOFTWARE.</span>
+<span class="c1">#==================================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">qwiic_gpio</span>
+<span class="sd">============</span>
+<span class="sd">Python module for the Qwiic GPIO.</span>
+
+<span class="sd">This python package is a port of the existing [SparkFun GPIO Arduino Library](https://github.com/sparkfun/SparkFun_gpio_Arduino_Library)</span>
+
+<span class="sd">This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)</span>
+
+<span class="sd">New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1">#-----------------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">qwiic_i2c</span>
+
+<span class="c1"># Define the device name and I2C addresses. These are set in the class defintion </span>
+<span class="c1"># as class variables, making them avilable without having to create a class instance.</span>
+<span class="c1"># This allows higher level logic to rapidly create a index of qwiic devices at </span>
+<span class="c1"># runtine</span>
+<span class="c1">#</span>
+<span class="c1"># The name of this device </span>
+<span class="n">_DEFAULT_NAME</span> <span class="o">=</span> <span class="s2">&quot;Qwiic GPIO&quot;</span>
+
+<span class="c1"># Some devices have multiple availabel addresses - this is a list of these addresses.</span>
+<span class="c1"># NOTE: The first address in this list is considered the default I2C address for the </span>
+<span class="c1"># device.</span>
+<span class="n">_AVAILABLE_I2C_ADDRESS</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x27</span><span class="p">,</span> <span class="mh">0x26</span><span class="p">,</span> <span class="mh">0x25</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x23</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">]</span>
+
+<span class="c1"># define the class that encapsulates the device being created. All information associated with this</span>
+<span class="c1"># device is encapsulated by this class. The device class should be the only value exported </span>
+<span class="c1"># from this module.</span>
+
+<div class="viewcode-block" id="QwiicGPIO"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO">[docs]</a><span class="k">class</span> <span class="nc">QwiicGPIO</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    QwiicGPIO</span>
+
+<span class="sd">        :param address: The I2C address to use for the device. </span>
+<span class="sd">                        If not provided, the default address is used.</span>
+<span class="sd">        :param i2c_driver: An existing i2c driver object. If not provided </span>
+<span class="sd">                        a driver object is created. </span>
+<span class="sd">        :return: The GPIO device object.</span>
+<span class="sd">        :rtype: Object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Constructor</span>
+    <span class="n">device_name</span>         <span class="o">=</span> <span class="n">_DEFAULT_NAME</span>
+    <span class="n">available_addresses</span> <span class="o">=</span> <span class="n">_AVAILABLE_I2C_ADDRESS</span>
+
+    <span class="c1"># Registers</span>
+    <span class="n">REG_INPUT_PORT</span> <span class="o">=</span> <span class="mh">0x00</span>
+    <span class="n">REG_OUTPUT_PORT</span> <span class="o">=</span> <span class="mh">0x01</span>
+    <span class="n">REG_INVERSION</span> <span class="o">=</span> <span class="mh">0x02</span>
+    <span class="n">REG_CONFIGURATION</span> <span class="o">=</span> <span class="mh">0x03</span>
+
+    <span class="c1"># Status/Configuration Flags</span>
+    <span class="n">GPIO_IN</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">GPIO_OUT</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">GPIO_LO</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">GPIO_HI</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="n">INVERT</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">NO_INVERT</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">inversion_0</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_1</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_2</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_3</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_4</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_5</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_6</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">inversion_7</span> <span class="o">=</span>   <span class="mi">0</span>
+
+    <span class="n">mode_0</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_1</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_2</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_3</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_4</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_5</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_6</span> <span class="o">=</span>        <span class="mi">0</span>
+    <span class="n">mode_7</span> <span class="o">=</span>        <span class="mi">0</span>
+
+    <span class="n">out_status_0</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_1</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_2</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_3</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_4</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_5</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_6</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">out_status_7</span> <span class="o">=</span>  <span class="mi">1</span>
+
+    <span class="n">in_status_0</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_1</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_2</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_3</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_4</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_5</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_6</span> <span class="o">=</span>   <span class="mi">0</span>
+    <span class="n">in_status_7</span> <span class="o">=</span>   <span class="mi">0</span>
+
+    <span class="c1"># Constructor</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">i2c_driver</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Did the user specify an I2C address?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span> <span class="k">if</span> <span class="n">address</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_addresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># load the I2C driver if one isn&#39;t provided</span>
+
+        <span class="k">if</span> <span class="n">i2c_driver</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">=</span> <span class="n">qwiic_i2c</span><span class="o">.</span><span class="n">getI2CDriver</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to load I2C driver for this platform.&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">=</span> <span class="n">i2c_driver</span>
+    <span class="c1"># ----------------------------------</span>
+    <span class="c1"># isConnected()</span>
+    <span class="c1">#</span>
+    <span class="c1"># Is an actual board connected to our system?</span>
+
+<div class="viewcode-block" id="QwiicGPIO.isConnected"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.isConnected">[docs]</a>    <span class="k">def</span> <span class="nf">isConnected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Determine if a Qwiic GPIO device is connected to the system..</span>
+
+<span class="sd">            :return: True if the device is connected, otherwise False.</span>
+<span class="sd">            :rtype: bool</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">qwiic_i2c</span><span class="o">.</span><span class="n">isDeviceConnected</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------</span>
+    <span class="c1"># begin()</span>
+    <span class="c1">#</span>
+    <span class="c1"># Initialize the system/validate the board. </span>
+<div class="viewcode-block" id="QwiicGPIO.begin"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.begin">[docs]</a>    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Initialize the operation of the Qwiic GPIO</span>
+
+<span class="sd">            :return: Returns true of the initializtion was successful, otherwise False.</span>
+<span class="sd">            :rtype: bool</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="n">isConnected</span><span class="p">()</span></div>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># setMode()</span>
+    <span class="c1">#</span>
+    <span class="c1"># Set the mode (input/output) for all GPIO</span>
+<div class="viewcode-block" id="QwiicGPIO.setMode"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.setMode">[docs]</a>    <span class="k">def</span> <span class="nf">setMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Sends all 8 pin modes (input or output) to the GPIO to set all 8 pins. Setting the value to input or output is done using myGPIO.mode_0 = myGPIO.GPIO_OUT</span>
+
+<span class="sd">            :return: No return value</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_2</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_3</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_4</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_5</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_6</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>
+        <span class="n">tempData</span> <span class="o">&amp;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_7</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_CONFIGURATION</span><span class="p">,</span> <span class="n">tempData</span><span class="p">)</span></div>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># getMode()</span>
+    <span class="c1">#</span>
+    <span class="c1"># Get the mode (input/output) for all GPIO</span>
+<div class="viewcode-block" id="QwiicGPIO.getMode"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.getMode">[docs]</a>    <span class="k">def</span> <span class="nf">getMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Updates mode_X variables with values from Qwiic GPIO</span>
+
+<span class="sd">            :return: The value of the mode register.</span>
+<span class="sd">            :rtype: 8 bit unsigned integer</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">readByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_CONFIGURATION</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_0</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_4</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_6</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode_7</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span>
+        <span class="k">return</span> <span class="n">tempData</span></div>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># setInversion()</span>
+    <span class="c1"># </span>
+    <span class="c1"># Set whether a GPIO will invert an incoming signal</span>
+
+<div class="viewcode-block" id="QwiicGPIO.setInversion"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.setInversion">[docs]</a>    <span class="k">def</span> <span class="nf">setInversion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Send the inversion modes of all pins. This function must be called after editing modes using myGPIO.inversion_0 = myGPIO.INVERT</span>
+
+<span class="sd">            :return: No return value</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_2</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_3</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_4</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_5</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_6</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inversion_7</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_INVERSION</span><span class="p">,</span> <span class="n">tempData</span><span class="p">)</span></div>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># getInversion()</span>
+    <span class="c1"># </span>
+    <span class="c1"># Get inversion settings from each GPIO.</span>
+
+<div class="viewcode-block" id="QwiicGPIO.getInversion"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.getInversion">[docs]</a>    <span class="k">def</span> <span class="nf">getInversion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Updates inversion_X variables with values from Qwiic GPIO</span>
+
+<span class="sd">            :return: The value of the inversion register.</span>
+<span class="sd">            :rtype: 8 bit unsigned integer</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">readByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_INVERSION</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_0</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_4</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_6</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_7</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span>
+        <span class="k">return</span> <span class="n">tempData</span></div>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># setGPIO()</span>
+    <span class="c1"># </span>
+    <span class="c1"># Sends all GPIO outputs to the Qwiic GPIO </span>
+
+<div class="viewcode-block" id="QwiicGPIO.setGPIO"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.setGPIO">[docs]</a>    <span class="k">def</span> <span class="nf">setGPIO</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Send all current output settings to the GPIO. This should be called after calling myGPIO.out_status_0 = myGPIO.GPIO_HI to set the GPIO.</span>
+
+<span class="sd">            :return: No return value</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_2</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_3</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_4</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_5</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_6</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>
+        <span class="n">tempData</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_status_7</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_OUTPUT_PORT</span><span class="p">,</span> <span class="n">tempData</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QwiicGPIO.getGPIO"><a class="viewcode-back" href="../apiref.html#qwiic_gpio.QwiicGPIO.getGPIO">[docs]</a>    <span class="k">def</span> <span class="nf">getGPIO</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Updates mode_X variables with values from Qwiic GPIO</span>
+
+<span class="sd">            :return: The value of the mode register.</span>
+<span class="sd">            :rtype: 8 bit unsigned integer</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tempData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">readByte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">REG_INPUT_PORT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_0</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_4</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_6</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_status_7</span> <span class="o">=</span> <span class="p">(</span><span class="n">tempData</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span>
+        <span class="k">return</span> <span class="n">tempData</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SparkFun Electronics
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

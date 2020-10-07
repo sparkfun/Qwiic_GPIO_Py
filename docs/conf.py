@@ -17,12 +17,12 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'sparkfun_template_py'
-copyright = '2019, SparkFun Electronics'
+project = 'sparkfun_gpio_py'
+copyright = '2020, SparkFun Electronics'
 author = 'SparkFun Electronics'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.01'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------

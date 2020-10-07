@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; sparkfun_gpio_py 0.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example One" href="ex1.html" />
+    <link rel="prev" title="Qwiic_Relay_Py" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> sparkfun_gpio_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Qwiic_Relay_Py</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qwiic-gpio">qwiic_gpio</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ex1.html">Example One</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex2.html">Example 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex3.html">Example 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex4.html">Example 4</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://sparkfun.com">     SparkFun</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.sparkfun.com/products/17047">SparkFun Qwiic GPIO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sparkfun/Qwiic_GPIO_Py">     GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.sparkfun.com/qwiic">     SparkFun qwiic</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sparkfun_gpio_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/apiref.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-qwiic_gpio">
+<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-qwiic_gpio" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qwiic-gpio">
+<h2>qwiic_gpio<a class="headerlink" href="#qwiic-gpio" title="Permalink to this headline">¶</a></h2>
+<p>Python module for the Qwiic GPIO.</p>
+<p>This python package is a port of the existing [SparkFun GPIO Arduino Library](<a class="reference external" href="https://github.com/sparkfun/SparkFun_gpio_Arduino_Library">https://github.com/sparkfun/SparkFun_gpio_Arduino_Library</a>)</p>
+<p>This package can be used in conjunction with the overall [SparkFun qwiic Python Package](<a class="reference external" href="https://github.com/sparkfun/Qwiic_Py">https://github.com/sparkfun/Qwiic_Py</a>)</p>
+<p>New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](<a class="reference external" href="https://www.sparkfun.com/qwiic">https://www.sparkfun.com/qwiic</a>).</p>
+<dl class="class">
+<dt id="qwiic_gpio.QwiicGPIO">
+<em class="property">class </em><code class="sig-prename descclassname">qwiic_gpio.</code><code class="sig-name descname">QwiicGPIO</code><span class="sig-paren">(</span><em class="sig-param">address=None</em>, <em class="sig-param">i2c_driver=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – The I2C address to use for the device. 
+If not provided, the default address is used.</p></li>
+<li><p><strong>i2c_driver</strong> – An existing i2c driver object. If not provided 
+a driver object is created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The GPIO device object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Object</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.begin">
+<code class="sig-name descname">begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.begin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.begin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the operation of the Qwiic GPIO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns true of the initializtion was successful, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.getGPIO">
+<code class="sig-name descname">getGPIO</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.getGPIO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.getGPIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates mode_X variables with values from Qwiic GPIO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the mode register.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>8 bit unsigned integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.getInversion">
+<code class="sig-name descname">getInversion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.getInversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.getInversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates inversion_X variables with values from Qwiic GPIO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the inversion register.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>8 bit unsigned integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.getMode">
+<code class="sig-name descname">getMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.getMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.getMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates mode_X variables with values from Qwiic GPIO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the mode register.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>8 bit unsigned integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.isConnected">
+<code class="sig-name descname">isConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.isConnected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.isConnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if a Qwiic GPIO device is connected to the system..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the device is connected, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.setGPIO">
+<code class="sig-name descname">setGPIO</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.setGPIO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.setGPIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send all current output settings to the GPIO. This should be called after calling myGPIO.out_status_0 = myGPIO.GPIO_HI to set the GPIO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>No return value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.setInversion">
+<code class="sig-name descname">setInversion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.setInversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.setInversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the inversion modes of all pins. This function must be called after editing modes using myGPIO.inversion_0 = myGPIO.INVERT</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>No return value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qwiic_gpio.QwiicGPIO.setMode">
+<code class="sig-name descname">setMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qwiic_gpio.html#QwiicGPIO.setMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qwiic_gpio.QwiicGPIO.setMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends all 8 pin modes (input or output) to the GPIO to set all 8 pins. Setting the value to input or output is done using myGPIO.mode_0 = myGPIO.GPIO_OUT</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>No return value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ex1.html" class="btn btn-neutral float-right" title="Example One" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Qwiic_Relay_Py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SparkFun Electronics
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -17,7 +17,7 @@
 #
 # Do you like this library? Help support SparkFun. Buy a board!
 #==================================================================================
-# Copyright (c) 2019 SparkFun Electronics
+# Copyright (c) 2020 SparkFun Electronics
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy 
 # of this software and associated documentation files (the "Software"), to deal 
@@ -43,7 +43,7 @@ qwiic_gpio
 ============
 Python module for the Qwiic GPIO.
 
-This python package is a port of the existing [SparkFun gpio Arduino Library](https://github.com/sparkfun/SparkFun_gpio_Arduino_Library)
+This python package is a port of the existing [SparkFun GPIO Arduino Library](https://github.com/sparkfun/SparkFun_gpio_Arduino_Library)
 
 This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
 
@@ -161,7 +161,7 @@ class QwiicGPIO(object):
 
     def isConnected(self):
         """ 
-            Determine if a BME280 device is conntected to the system..
+            Determine if a Qwiic GPIO device is connected to the system..
 
             :return: True if the device is connected, otherwise False.
             :rtype: bool
@@ -175,21 +175,22 @@ class QwiicGPIO(object):
     # Initialize the system/validate the board. 
     def begin(self):
         """ 
-            Initialize the operation of the BME280 module
+            Initialize the operation of the Qwiic GPIO
 
             :return: Returns true of the initializtion was successful, otherwise False.
             :rtype: bool
 
         """
         
-        return True
+        return isConnected()
 
     #----------------------------------------------------------------
-    # Mode of each GPIO
-
+    # setMode()
+    #
+    # Set the mode (input/output) for all GPIO
     def setMode(self):
         """ 
-            Send the all pin modes (input or output) to the GPIO.
+            Sends all 8 pin modes (input or output) to the GPIO to set all 8 pins. Setting the value to input or output is done using myGPIO.mode_0 = myGPIO.GPIO_OUT
 
             :return: No return value
 
@@ -205,7 +206,10 @@ class QwiicGPIO(object):
         tempData &= self.mode_7 << 7
         self._i2c.writeByte(self.address, self.REG_CONFIGURATION, tempData)
 
-
+    #----------------------------------------------------------------
+    # getMode()
+    #
+    # Get the mode (input/output) for all GPIO
     def getMode(self):
         """ 
             Updates mode_X variables with values from Qwiic GPIO
@@ -226,11 +230,13 @@ class QwiicGPIO(object):
         return tempData
 
     #----------------------------------------------------------------
-    # Mode of each GPIO
+    # setInversion()
+    # 
+    # Set whether a GPIO will invert an incoming signal
 
     def setInversion(self):
         """ 
-            Send the all pin modes (input or output) to the GPIO.
+            Send the inversion modes of all pins. This function must be called after editing modes using myGPIO.inversion_0 = myGPIO.INVERT
 
             :return: No return value
 
@@ -246,6 +252,10 @@ class QwiicGPIO(object):
         tempData |= self.inversion_7 << 7
         self._i2c.writeByte(self.address, self.REG_INVERSION, tempData)
 
+    #----------------------------------------------------------------
+    # getInversion()
+    # 
+    # Get inversion settings from each GPIO.
 
     def getInversion(self):
         """ 
@@ -267,11 +277,13 @@ class QwiicGPIO(object):
         return tempData
 
     #----------------------------------------------------------------
-    # Mode of each GPIO
+    # setGPIO()
+    # 
+    # Sends all GPIO outputs to the Qwiic GPIO 
 
     def setGPIO(self):
         """ 
-            Send the all pin out_statuss (input or output) to the GPIO.
+            Send all current output settings to the GPIO. This should be called after calling myGPIO.out_status_0 = myGPIO.GPIO_HI to set the GPIO.
 
             :return: No return value
 
