@@ -182,7 +182,7 @@ class QwiicGPIO(object):
 
         """
         
-        return isConnected()
+        return self.isConnected()
 
     #----------------------------------------------------------------
     # setMode()
