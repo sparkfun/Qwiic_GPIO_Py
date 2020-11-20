@@ -94,8 +94,8 @@ class QwiicGPIO(object):
     REG_CONFIGURATION = 0x03
 
     # Status/Configuration Flags
-    GPIO_IN = 0
-    GPIO_OUT = 1
+    GPIO_OUT = 0
+    GPIO_IN = 1
 
     GPIO_LO = 0
     GPIO_HI = 1
@@ -196,14 +196,14 @@ class QwiicGPIO(object):
 
         """
         tempData = 0
-        tempData &= self.mode_0 << 0
-        tempData &= self.mode_1 << 1
-        tempData &= self.mode_2 << 2
-        tempData &= self.mode_3 << 3
-        tempData &= self.mode_4 << 4
-        tempData &= self.mode_5 << 5
-        tempData &= self.mode_6 << 6
-        tempData &= self.mode_7 << 7
+        tempData |= self.mode_0 << 0
+        tempData |= self.mode_1 << 1
+        tempData |= self.mode_2 << 2
+        tempData |= self.mode_3 << 3
+        tempData |= self.mode_4 << 4
+        tempData |= self.mode_5 << 5
+        tempData |= self.mode_6 << 6
+        tempData |= self.mode_7 << 7
         self._i2c.writeByte(self.address, self.REG_CONFIGURATION, tempData)
 
     #----------------------------------------------------------------
