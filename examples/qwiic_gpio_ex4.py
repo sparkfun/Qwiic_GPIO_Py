@@ -78,23 +78,23 @@ def runExample():
     myGPIO.setInversion()
 
     while True:
-		myGPIO.getGPIO()  # This function updates each in_status_x variable
-		print("GPIO 0:", end=" ")
-        print(myGPIO.in_status_0 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 1:", end=" ")
-        print(myGPIO.in_status_1 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 2:", end=" ")
-        print(myGPIO.in_status_2 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 3:", end=" ")
-        print(myGPIO.in_status_3 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 4:", end=" ")
-        print(myGPIO.in_status_4 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 5:", end=" ")
-        print(myGPIO.in_status_5 = myGPIO.GPIO_LO), end=" "
-		print("GPIO 6:", end=" ")
-        print(myGPIO.in_status_6 = myGPIO.GPIO_LO, end=" ")
-		print("GPIO 7:", end=" ")
-        print(myGPIO.in_status_7 = myGPIO.GPIO_LO)
+        myGPIO.getGPIO()  # This function updates each in_status_x variable
+        print("GPIO 0:", end=" ")
+        print(myGPIO.in_status_0 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 1:", end=" ")
+        print(myGPIO.in_status_1 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 2:", end=" ")
+        print(myGPIO.in_status_2 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 3:", end=" ")
+        print(myGPIO.in_status_3 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 4:", end=" ")
+        print(myGPIO.in_status_4 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 5:", end=" ")
+        print(myGPIO.in_status_5 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 6:", end=" ")
+        print(myGPIO.in_status_6 == myGPIO.GPIO_LO, end=" ")
+        print("GPIO 7:", end=" ")
+        print(myGPIO.in_status_7 == myGPIO.GPIO_LO)
         time.sleep(.25)
 
 if __name__ == '__main__':
